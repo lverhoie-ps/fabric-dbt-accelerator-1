@@ -24,18 +24,18 @@ unknown_member AS (
 
     SELECT
         CAST(0 AS BIGINT) AS product_key,
-        CAST('UNKNOWN' AS NVARCHAR(50)) AS product_id,
-        CAST('Unknown product' AS NVARCHAR(200)) AS product_name,
-        CAST('UNKNOWN' AS NVARCHAR(50)) AS category_code,
+        CAST('UNKNOWN' AS VARCHAR(50)) AS product_id,
+        CAST('Unknown product' AS VARCHAR(200)) AS product_name,
+        CAST('UNKNOWN' AS VARCHAR(50)) AS category_code,
         CAST(0 AS BIGINT) AS product_category_key,
-        CAST('Unknown' AS NVARCHAR(200)) AS category_name,
-        CAST('Unknown' AS NVARCHAR(200)) AS category_group,
+        CAST('Unknown' AS VARCHAR(200)) AS category_name,
+        CAST('Unknown' AS VARCHAR(200)) AS category_group,
         CAST(0 AS BIT) AS is_budget_relevant,
         CAST(NULL AS DECIMAL(18, 2)) AS unit_price,
         CAST(NULL AS DATE) AS active_from,
         CAST(NULL AS DATE) AS active_to,
         CAST(0 AS BIT) AS is_current,
-        CAST(NULL AS DATETIME2) AS updated_at
+        CAST(NULL AS DATETIME2(6)) AS updated_at
 
 ),
 
@@ -112,3 +112,4 @@ SELECT
     is_current,
     updated_at
 FROM final
+

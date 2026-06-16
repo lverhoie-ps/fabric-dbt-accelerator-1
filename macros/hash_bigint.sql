@@ -7,8 +7,8 @@
                     'SHA2_256',
                     CONCAT(
                         {%- for column in columns %}
-                            COALESCE(CONVERT(NVARCHAR(4000), {{ column }}), N'__dbt_null__')
-                            {%- if not loop.last %}, N'||', {% endif -%}
+                            COALESCE(CONVERT(VARCHAR(4000), {{ column }}), '__dbt_null__')
+                            {%- if not loop.last %}, '||', {% endif -%}
                         {%- endfor %}
                     )
                 ),

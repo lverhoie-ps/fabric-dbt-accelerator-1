@@ -8,3 +8,4 @@ livy-session-id.txt
 .DS_Store
 __pycache__/
 *.pyc
+.user.yml

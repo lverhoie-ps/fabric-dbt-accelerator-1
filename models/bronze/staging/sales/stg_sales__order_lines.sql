@@ -20,14 +20,14 @@ final AS (
     SELECT
         {{ hash_bigint(["'sales'", 'order_id', 'line_id']) }} AS sales_order_line_pk,
         {{ hash_bigint(["'sales'", 'order_id']) }} AS sales_order_pk,
-        CAST(order_id AS NVARCHAR(50)) AS order_id,
+        CAST(order_id AS VARCHAR(50)) AS order_id,
         CAST(line_id AS INT) AS line_id,
-        CAST(product_id AS NVARCHAR(50)) AS product_id,
+        CAST(product_id AS VARCHAR(50)) AS product_id,
         CAST(quantity AS INT) AS quantity,
         CAST(unit_price AS DECIMAL(18, 2)) AS unit_price,
         CAST(discount_amount AS DECIMAL(18, 2)) AS discount_amount,
-        CAST(updated_at AS DATETIME2) AS updated_at,
-        CAST(_loaded_at AS DATETIME2) AS source_loaded_at,
+        CAST(updated_at AS DATETIME2(6)) AS updated_at,
+        CAST(_loaded_at AS DATETIME2(6)) AS source_loaded_at,
         'sales' AS source_system,
         SYSUTCDATETIME() AS dbt_loaded_at
     FROM source_data
@@ -48,3 +48,4 @@ SELECT
     source_system,
     dbt_loaded_at
 FROM final
+

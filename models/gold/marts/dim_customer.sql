@@ -20,14 +20,14 @@ unknown_member AS (
 
     SELECT
         CAST(0 AS BIGINT) AS customer_key,
-        CAST('UNKNOWN' AS NVARCHAR(50)) AS customer_id,
-        CAST('Unknown customer' AS NVARCHAR(200)) AS full_name,
-        CAST(NULL AS NVARCHAR(320)) AS email,
-        CAST(NULL AS NVARCHAR(2)) AS country_code,
-        CAST('Unknown' AS NVARCHAR(100)) AS country_name,
-        CAST('Unknown' AS NVARCHAR(100)) AS city,
-        CAST(NULL AS DATETIME2) AS created_at,
-        CAST(NULL AS DATETIME2) AS updated_at
+        CAST('UNKNOWN' AS VARCHAR(50)) AS customer_id,
+        CAST('Unknown customer' AS VARCHAR(200)) AS full_name,
+        CAST(NULL AS VARCHAR(320)) AS email,
+        CAST(NULL AS VARCHAR(2)) AS country_code,
+        CAST('Unknown' AS VARCHAR(100)) AS country_name,
+        CAST('Unknown' AS VARCHAR(100)) AS city,
+        CAST(NULL AS DATETIME2(6)) AS created_at,
+        CAST(NULL AS DATETIME2(6)) AS updated_at
 
 ),
 
@@ -88,3 +88,4 @@ SELECT
     created_at,
     updated_at
 FROM final
+

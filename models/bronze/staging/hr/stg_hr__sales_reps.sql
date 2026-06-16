@@ -18,13 +18,13 @@ final AS (
 
     SELECT
         {{ hash_bigint(["'hr'", 'sales_rep_id']) }} AS sales_rep_pk,
-        CAST(sales_rep_id AS NVARCHAR(50)) AS sales_rep_id,
-        CAST(sales_rep_name AS NVARCHAR(200)) AS sales_rep_name,
-        CAST(region AS NVARCHAR(100)) AS region,
-        CAST(team_name AS NVARCHAR(100)) AS team_name,
-        CAST(manager_name AS NVARCHAR(200)) AS manager_name,
-        CAST(updated_at AS DATETIME2) AS updated_at,
-        CAST(_loaded_at AS DATETIME2) AS source_loaded_at,
+        CAST(sales_rep_id AS VARCHAR(50)) AS sales_rep_id,
+        CAST(sales_rep_name AS VARCHAR(200)) AS sales_rep_name,
+        CAST(region AS VARCHAR(100)) AS region,
+        CAST(team_name AS VARCHAR(100)) AS team_name,
+        CAST(manager_name AS VARCHAR(200)) AS manager_name,
+        CAST(updated_at AS DATETIME2(6)) AS updated_at,
+        CAST(_loaded_at AS DATETIME2(6)) AS source_loaded_at,
         'hr' AS source_system,
         SYSUTCDATETIME() AS dbt_loaded_at
     FROM source_data
@@ -43,3 +43,4 @@ SELECT
     source_system,
     dbt_loaded_at
 FROM final
+

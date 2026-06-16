@@ -65,29 +65,38 @@ models:
       - name: sales_fact_key
         description: BIGINT fact primary key generated from source order and line identifiers.
         tests: [not_null, unique]
+
       - name: customer_key
         tests:
           - not_null
           - relationships:
-              to: ref('dim_customer')
-              field: customer_key
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+
       - name: product_key
         tests:
           - not_null
           - relationships:
-              to: ref('dim_product')
-              field: product_key
+              arguments:
+                to: ref('dim_product')
+                field: product_key
+
       - name: sales_rep_key
         tests:
           - not_null
           - relationships:
-              to: ref('dim_sales_rep')
-              field: sales_rep_key
+              arguments:
+                to: ref('dim_sales_rep')
+                field: sales_rep_key
+
       - name: order_date_key
         tests:
           - not_null
           - relationships:
-              to: ref('dim_date')
-              field: date_key
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
       - name: net_sales_amount
         tests: [not_null]

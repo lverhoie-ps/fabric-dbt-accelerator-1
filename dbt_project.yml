@@ -2,6 +2,9 @@ name: fabric_dbt_accelerator
 version: '1.0.0'
 config-version: 2
 
+flags:
+  partial_parse: true
+
 profile: fabric_dbt_accelerator
 
 model-paths: ['models']
@@ -20,9 +23,6 @@ require-dbt-version: ['>=1.9.0', '<2.0.0']
 
 models:
   fabric_dbt_accelerator:
-    +persist_docs:
-      relation: true
-      columns: true
     bronze:
       +materialized: view
       +tags: ['bronze']
@@ -45,9 +45,6 @@ models:
 seeds:
   fabric_dbt_accelerator:
     +quote_columns: false
-    +persist_docs:
-      relation: true
-      columns: true
     raw_sales:
       +schema: raw_sales
     raw_hr:

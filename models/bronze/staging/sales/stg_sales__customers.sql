@@ -19,14 +19,14 @@ final AS (
 
     SELECT
         {{ hash_bigint(["'sales'", 'customer_id']) }} AS customer_pk,
-        CAST(customer_id AS NVARCHAR(50)) AS customer_id,
-        CAST(full_name AS NVARCHAR(200)) AS full_name,
-        LOWER(CAST(email AS NVARCHAR(320))) AS email,
-        UPPER(CAST(country_code AS NVARCHAR(2))) AS country_code,
-        CAST(city AS NVARCHAR(100)) AS city,
-        CAST(created_at AS DATETIME2) AS created_at,
-        CAST(updated_at AS DATETIME2) AS updated_at,
-        CAST(_loaded_at AS DATETIME2) AS source_loaded_at,
+        CAST(customer_id AS VARCHAR(50)) AS customer_id,
+        CAST(full_name AS VARCHAR(200)) AS full_name,
+        LOWER(CAST(email AS VARCHAR(320))) AS email,
+        UPPER(CAST(country_code AS VARCHAR(2))) AS country_code,
+        CAST(city AS VARCHAR(100)) AS city,
+        CAST(created_at AS DATETIME2(6)) AS created_at,
+        CAST(updated_at AS DATETIME2(6)) AS updated_at,
+        CAST(_loaded_at AS DATETIME2(6)) AS source_loaded_at,
         'sales' AS source_system,
         SYSUTCDATETIME() AS dbt_loaded_at
     FROM source_data
@@ -46,3 +46,4 @@ SELECT
     source_system,
     dbt_loaded_at
 FROM final
+

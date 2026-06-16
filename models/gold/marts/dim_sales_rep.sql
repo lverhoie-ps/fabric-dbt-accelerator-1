@@ -18,12 +18,12 @@ unknown_member AS (
 
     SELECT
         CAST(0 AS BIGINT) AS sales_rep_key,
-        CAST('UNKNOWN' AS NVARCHAR(50)) AS sales_rep_id,
-        CAST('Unknown sales rep' AS NVARCHAR(200)) AS sales_rep_name,
-        CAST('Unknown' AS NVARCHAR(100)) AS region,
-        CAST('Unknown' AS NVARCHAR(100)) AS team_name,
-        CAST('Unknown' AS NVARCHAR(200)) AS manager_name,
-        CAST(NULL AS DATETIME2) AS updated_at
+        CAST('UNKNOWN' AS VARCHAR(50)) AS sales_rep_id,
+        CAST('Unknown sales rep' AS VARCHAR(200)) AS sales_rep_name,
+        CAST('Unknown' AS VARCHAR(100)) AS region,
+        CAST('Unknown' AS VARCHAR(100)) AS team_name,
+        CAST('Unknown' AS VARCHAR(200)) AS manager_name,
+        CAST(NULL AS DATETIME2(6)) AS updated_at
 
 ),
 
@@ -76,3 +76,4 @@ SELECT
     manager_name,
     updated_at
 FROM final
+
