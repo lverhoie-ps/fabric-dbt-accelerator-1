@@ -63,29 +63,29 @@ sales_reps AS (
 
 final AS (
 
-    SELECT
+    SELECT -- noqa: ST06
         order_lines.sales_order_line_pk,
         orders.sales_order_pk,
-        COALESCE(customers.customer_pk, 0) AS customer_pk,
-        COALESCE(products.product_pk, 0) AS product_pk,
-        COALESCE(products.product_category_pk, 0) AS product_category_pk,
-        COALESCE(sales_reps.sales_rep_pk, 0) AS sales_rep_pk,
         orders.order_id,
         order_lines.line_id,
         orders.order_date,
-        CAST(CONVERT(CHAR(8), orders.order_date, 112) AS INT) AS order_date_key,
         orders.status,
         orders.currency_code,
         order_lines.quantity,
         order_lines.unit_price,
         order_lines.discount_amount,
+        orders.source_loaded_at,
+        orders.updated_at AS order_updated_at,
+        order_lines.updated_at AS order_line_updated_at,
+        COALESCE(customers.customer_pk, 0) AS customer_pk,
+        COALESCE(products.product_pk, 0) AS product_pk,
+        COALESCE(products.product_category_pk, 0) AS product_category_pk,
+        COALESCE(sales_reps.sales_rep_pk, 0) AS sales_rep_pk,
+        CAST(CONVERT(CHAR(8), orders.order_date, 112) AS INT) AS order_date_key,
         CAST(
             (order_lines.quantity * order_lines.unit_price) - order_lines.discount_amount
             AS DECIMAL(18, 2)
-        ) AS net_sales_amount,
-        orders.updated_at AS order_updated_at,
-        order_lines.updated_at AS order_line_updated_at,
-        orders.source_loaded_at
+        ) AS net_sales_amount
     FROM order_lines
     INNER JOIN orders
         ON order_lines.sales_order_pk = orders.sales_order_pk

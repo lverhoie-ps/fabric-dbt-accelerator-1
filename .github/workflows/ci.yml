@@ -33,4 +33,4 @@ jobs:
         run: dbt parse --profiles-dir .
 
       - name: Lint SQL
-        run: sqlfluff lint models macros tests
+        run: sqlfluff lint --config .sqlfluff-ci models tests

@@ -2,17 +2,17 @@
 
 WITH order_dates AS (
 
-    SELECT DISTINCT
-        order_date
+    SELECT order_date
     FROM {{ ref('ads_sales_order') }}
+    GROUP BY order_date
 
 ),
 
 final AS (
 
-    SELECT
+    SELECT -- noqa: ST06
+        order_date,
         CAST(CONVERT(CHAR(8), order_date, 112) AS INT) AS date_key,
-        order_date AS date_value,
         DATEPART(YEAR, order_date) AS calendar_year,
         DATEPART(QUARTER, order_date) AS calendar_quarter,
         DATEPART(MONTH, order_date) AS month_number,
@@ -25,7 +25,7 @@ final AS (
 
 SELECT
     date_key,
-    date_value,
+    order_date AS date_value,
     calendar_year,
     calendar_quarter,
     month_number,

@@ -25,15 +25,15 @@ final AS (
         email,
         country_code,
         city,
+        created_at,
+        updated_at,
+        source_loaded_at,
         CASE
             WHEN country_code = 'BE' THEN 'Belgium'
             WHEN country_code = 'NL' THEN 'Netherlands'
             WHEN country_code = 'FR' THEN 'France'
             ELSE 'Other'
-        END AS country_name,
-        created_at,
-        updated_at,
-        source_loaded_at
+        END AS country_name
     FROM customers
 
 )
